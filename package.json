@@ -1,6 +1,9 @@
 {
   "name": "ESP3D-WebUI",
   "description": "Web UI for ESP3D",
+  "scripts": {
+    "build": "gulp package"
+  },
   "devDependencies": {
     "del": "latest",
     "deprecated": "latest",
@@ -15,13 +18,13 @@
     "gulp-htmlmin": "latest",
     "gulp-if": "latest",
     "gulp-jshint": "latest",
-    "gulp-ng-annotate": "latest",
+    "gulp-ng-annotate": "^2.1.0",
     "gulp-remove-code": "latest",
     "gulp-replace": "latest",
-    "gulp-smoosher": "latest",
+    "gulp-smoosher": "^0.0.9",
     "gulp-uglify": "latest",
-    "gulp-zip": "latest",
-    "jshint": "latest",
+    "gulp-zip": "^5.1.0",
+    "jshint": "^2.13.4",
     "merge-stream": "latest"
   },
   "repository": "https://github.com/luc-github/ESP3D-WEBUI",

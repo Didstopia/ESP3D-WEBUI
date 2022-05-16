@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm i
+      - run: npm run build
+      - uses: actions/artifact@v3
+        with:
+          name: index.html.gz
+          path: index.html.gz
+          mime-type: application/gzip
