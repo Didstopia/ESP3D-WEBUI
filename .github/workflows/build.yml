@@ -23,25 +23,25 @@ jobs:
       - name: Build Web UI (All)
         run: |-
           npm run build:all
-          mv index.html.gz LANG_ALL_index.html.gz
+          #mv index.html.gz LANG_ALL_index.html.gz
       
       - name: Upload Web UI (All) to GitHub
         uses: actions/upload-artifact@v3
         with:
-          name: ESP3D-WEBUI_LANG_ALL
-          path: LANG_ALL_index.html.gz
+          name: ESP3D-WEBUI-LANG-ALL
+          path: index.html.gz
           if-no-files-found: error
           retention-days: 30
 
       - name: Build Web UI (English)
         run: |-
           npm run build:en
-          mv index.html.gz LANG_EN_index.html.gz
+          #mv index.html.gz LANG_EN_index.html.gz
       
       - name: Upload Web UI (English) to GitHub
         uses: actions/upload-artifact@v3
         with:
-          name: ESP3D-WEBUI_LANG_EN
-          path: LANG_EN_index.html.gz
+          name: ESP3D-WEBUI-LANG-EN
+          path: index.html.gz
           if-no-files-found: error
           retention-days: 30
