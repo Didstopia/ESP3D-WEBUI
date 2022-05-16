@@ -7,17 +7,41 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build
+    name: Build Web UI
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           cache: 'npm'
-      - run: npm i
-      - run: npm run build
-      - uses: actions/upload-artifact@v3
+      
+      - name: Install Dependencies
+        run: npm i
+      
+      - name: Build Web UI (All)
+        run: |-
+          npm run build:all
+          mv index.html.gz LANG_ALL_index.html.gz
+      
+      - name: Upload Web UI (All) to GitHub
+        uses: actions/upload-artifact@v3
         with:
-          name: index.html.gz
-          path: index.html.gz
+          name: ESP3D-WEBUI_LANG_ALL
+          path: LANG_ALL_index.html.gz
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Build Web UI (English)
+        run: |-
+          npm run build:en
+          mv index.html.gz LANG_EN_index.html.gz
+      
+      - name: Upload Web UI (all languages) to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: ESP3D-WEBUI_LANG_ALL
+          path: LANG_EN_index.html.gz
           if-no-files-found: error
           retention-days: 30

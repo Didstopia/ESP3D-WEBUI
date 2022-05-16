@@ -2,7 +2,10 @@
   "name": "ESP3D-WebUI",
   "description": "Web UI for ESP3D",
   "scripts": {
-    "build": "gulp package"
+    "prebuild": "mkdir -p dist; rm -rf dist/* *.gz",
+    "build": "npm run build:all",
+    "build:all": "gulp package",
+    "build:en": "gulp package --lang en"
   },
   "devDependencies": {
     "del": "latest",
